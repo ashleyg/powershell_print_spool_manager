@@ -5,7 +5,7 @@ if((Get-ChildItem C:\WINDOWS\system32\spool\PRINTERS\ | Measure-Object).Count -g
     Write-Host "Oldest file is $($oldest_file.LastWriteTime)"
     Write-Host "Delta: $delta"
 
-    if($delta.Minutes -ge 10) {
+    if($delta.TotalMinutes -ge 10) {
         Write-Host "Max time Reached"
         Stop-Service Spooler
         Remove-Item –path C:\WINDOWS\system32\spool\PRINTERS\*
